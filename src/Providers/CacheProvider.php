@@ -15,9 +15,9 @@ class CacheProvider implements ServiceProviderInterface
     /**
      * Register cache component
      *
-     * @param Container $pimple
+     * @param Container $app
      */
-    public function register(Container $pimple)
+    public function register(Container $app)
     {
         !isset($app['cache_adapter']) && $app['cache_adapter'] = function () {
             return new Factory();

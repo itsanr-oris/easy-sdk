@@ -15,9 +15,9 @@ class ConfigProvider implements ServiceProviderInterface
     /**
      * Register config component
      *
-     * @param Container $pimple
+     * @param Container $app
      */
-    public function register(Container $pimple)
+    public function register(Container $app)
     {
         !isset($app['config']) && $app['config'] = function (ServiceContainer $app) {
             return new Collection($app->getConfig());
