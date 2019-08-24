@@ -19,9 +19,9 @@ class HttpClientProvider implements ServiceProviderInterface
     /**
      * Register http-client component
      *
-     * @param Container $pimple
+     * @param Container $app
      */
-    public function register(Container $pimple)
+    public function register(Container $app)
     {
         !isset($app['http_client']) && $app['http_client'] = function ($app) {
             $client = new HttpClient($app->config['http_client']);

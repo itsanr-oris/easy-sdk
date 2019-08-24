@@ -15,9 +15,9 @@ class LoggerProvider implements ServiceProviderInterface
     /**
      * Register logger component
      *
-     * @param Container $pimple
+     * @param Container $app
      */
-    public function register(Container $pimple)
+    public function register(Container $app)
     {
         !isset($app['logger_driver']) && $app['logger_driver'] = function () {
             return new Factory();
