@@ -1,0 +1,38 @@
+{
+    "name": "foris/easy-sdk-framework",
+    "description": "an easy sdk framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "F.oris",
+            "email": "us@foris.me"
+        }
+    ],
+    "require": {
+        "php": ">7.1",
+        "pimple/pimple": "^3.2",
+        "f-oris/easy-logger": "^1.0",
+        "f-oris/easy-cache": "^1.0",
+        "f-oris/easy-support": "^1.0",
+        "f-oris/easy-httpclient": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1",
+        "mockery/mockery": "^1.2",
+        "fzaninotto/faker": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Foris\\Easy\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Foris\\Easy\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
