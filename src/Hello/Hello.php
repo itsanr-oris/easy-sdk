@@ -16,7 +16,6 @@ class Hello extends Component
      */
     public function hello()
     {
-        $this->app()->get('logger')->debug('aaa');
         return "Hello, easy sdk framework.";
     }
 }
