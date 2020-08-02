@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">7.1",
-        "f-oris/easy-sdk-framework": "^1.0"
+        "f-oris/easy-sdk-framework": "^1.0",
+        "f-oris/easy-sdk-logger": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.1",
