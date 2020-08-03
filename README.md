@@ -12,29 +12,31 @@ Easy sdk 是一个快速构建PHP版本SDK的解决方案
 
 ## 快速上手
 
-1. 安装easy-sdk-installer
+##### 1. 安装easy-sdk-installer
+
+easy-sdk-installer是一个快速创建SDK项目的指令包，通过该扩展包，开发者可以快速创建SDK项目
 
 ```bash
 composer global require f-oris/easy-sdk-installer
 ```
 
-easy-sdk-installer是一个快速创建SDK项目的指令包，通过该扩展包，开发者可以快速创建SDK项目
+##### 2. 创建sdk项目
 
-2. 创建sdk项目
+执行以下命令，按照提示依次填入sdk包名、描述、作者、根命名空间，即可完成创建
 
 ```bash
 easy-sdk new sdk-demo
 ```
 
-执行命令后，按照提示依次填入sdk包名、描述、作者、根命名空间，即可完成创建
+##### 3. 创建组件
 
-3. 创建组件
+执行组件创建命令，建议以 `模块/组件` 的方式进行组件创建
 
 ```bash
 php artisan make:component Hello/Hello
 ```
 
-执行该命令完毕后，在 `src` 目录下可以找到相应的组件信息，具体文件路径为 `src/Hello/Hello.php`，打开该文件，增加一个hello组件功能，返回一个问候语字符串
+命令执行完毕后，在 `src` 目录下可以找到相应的组件信息，具体文件路径为 `src/Hello/Hello.php`，打开该文件，增加一个hello组件功能，返回一个问候语字符串
 
 ```php
 <?php
@@ -60,7 +62,7 @@ class Hello extends Component
 }
 ```
 
-4. 调用组件
+##### 4. 调用组件
 
 组件创建完毕后，会自动注册到SDK服务容器中，注册的ID为：Component::name()，在实际业务逻辑处可以通过该ID获取组件实例，完成相应的业务逻辑
 
@@ -75,9 +77,9 @@ $app->get(\Foris\Easy\Sdk\Skeleton\Hello\Hello::name())->hello();
 
 ## 核心构架
 
-1. 服务容器（ServiceContainer）
+##### 1. 服务容器（ServiceContainer）
 
-Easy sdk 框架的服务容器基于 `pimple/pimple` 容器基础上构建，增加四个简单明了的快捷操作：singleton、bind、rebind、get，分别对应着注册单例服务、注册服务、重新注册服务、获取服务实例，具体使用如下(可参考laravel服务注册)
+Easy sdk 框架的服务容器基于 `pimple/pimple` 容器基础上构建，增加四个简单明了的快捷操作：singleton、bind、rebind、get，分别对应着注册单例服务、注册服务、重新注册服务、获取服务实例，具体使用如下(可参考laravel服务容器)
 
 ```php
 <?php
@@ -105,7 +107,7 @@ $app->get('hello.bind');
 
 ```
 
-2. 服务提供者（ServiceProvider）
+##### 2. 服务提供者（ServiceProvider）
 
 服务提供者是SDK组件引导、加载到服务容器核心组件。所有服务提供者都需要继承`Foris\Easy\Sdk\ServiceProvider`类，大多数情况下，服务提供者需要实现`register`方法，并在该方法内将具体的组件服务注册到服务容器内，开发者可通过具体的服务注册ID在容器内获取具体的组件服务实例，执行实际业务逻辑处理。服务提供者主要提供以下几种组件服务注册功能：组件注册、配置信息注册、组件命令注册，实例代码如下（参考laravel：Illuminate\Support\ServiceProvider）
 
@@ -146,7 +148,7 @@ class ServiceProvider extends \Foris\Easy\Sdk\ServiceProvider
 
 ## 基础功能
 
-1. 组件配置管理
+##### 1. 组件配置管理
 
 Easy sdk 框架默认加载配置管理组件(Config)，用于管理整个SDK应用程序在运行过程中所使用到的各种配置信息，主要使用方式如下：
 
@@ -169,7 +171,7 @@ print_r($app->get('config')->get('not_exists_config_item', 'default'));
 
 ```
 
-2. 错误与日志
+##### 2. 错误与日志
 
 Easy sdk 框架默认加载日志组件，支持 `signle`, `daily` 两种日志写入模式，开发者可以通过修改 `config/logger.php` 中的配置信息，更改日志写入以及存储方式；该组件遵循 `PSR-3` 日志接口规范，开发者可根据SDK的实际应用场景，使用其他遵循 `PSR-3` 规范的日志组件替换该组件实例，如SDK在适配laravel框架时，可用laravel框架内的logger组件替换掉SDK内的logger组件，以方便开发者自身进行开发调试。
 
@@ -189,11 +191,15 @@ $app->get('logger')->debug('debug info');
 
 ## 组件包开发
 
-以日志组件包easy-sdk-logger为例
+> 以日志组件包 `easy-sdk-logger` 为例
 
-1. 完成easy-logger扩展包基础功能开发
+##### 1. 基础功能包开发
 
-2. 新建一个组件包项目，引入easy-logger扩展包，并完成Easy sdk服务提供者代码编写，核心代码如下
+创建一个easy-logger项目，按照psr-3规范，完成日志组件基础功能开发，并提交到packagist
+
+##### 2. 组件扩展包开发
+
+新建一个组件包项目，引入easy-logger扩展包，并完成Easy sdk服务提供者代码编写，核心代码如下
 
 ```php
 <?php
@@ -233,7 +239,9 @@ class ServiceProvider extends \Foris\Easy\Sdk\ServiceProvider
 
 ```
 
-3. 测试并完善扩展包功能。引入 `f-oris/easy-sdk-develop` 扩展包，编写测试代码如下
+##### 3. 完善功能测试
+
+引入 `f-oris/easy-sdk-develop` 扩展包，该扩展包内置一个虚拟的sdk运行环境，可用于模拟组件加载调用功能，编写测试代码如下
 
 ```php
 <?php
@@ -281,7 +289,9 @@ class GetLoggerInstanceTest extends TestCase
 }
 ```
 
-4. 打开composer.json文件，写入如下内容，以便Easy sdk服务容器识别并自动加载此服务提供者
+##### 4. 编写Easy sdk组件包发现代码
+
+打开composer.json文件，写入如下内容，以便Easy sdk服务容器识别并自动加载此服务提供者
 
 ```json
 {
@@ -295,7 +305,9 @@ class GetLoggerInstanceTest extends TestCase
 }
 ```
 
-5. 到packagist提交发布组件包，发布完毕后，即可在SDK项目中引入组件包并应用到实际业务中
+##### 5. 发布组件扩展包
+
+到packagist提交发布组件包，发布完毕后，即可在SDK项目中引入组件包并应用到实际业务中
 
 ## 推荐组件包
 
