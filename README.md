@@ -2,6 +2,7 @@
 
 一个快速构建PHP版本SDK的解决方案
 
+[![Build Status](https://travis-ci.com/itsanr-oris/easy-sdk.svg?branch=master)](https://travis-ci.com/itsanr-oris/easy-sdk)
 [![Latest Stable Version](https://poser.pugx.org/f-oris/easy-sdk/v)](//packagist.org/packages/f-oris/easy-sdk)
 [![Total Downloads](https://poser.pugx.org/f-oris/easy-sdk/downloads)](//packagist.org/packages/f-oris/easy-sdk)
 [![Latest Unstable Version](https://poser.pugx.org/f-oris/easy-sdk/v/unstable)](//packagist.org/packages/f-oris/easy-sdk)
