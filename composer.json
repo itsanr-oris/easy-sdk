@@ -10,14 +10,13 @@
         }
     ],
     "require": {
-        "php": ">7.1",
-        "f-oris/easy-sdk-framework": "^1.0",
-        "f-oris/easy-sdk-logger": "^1.0"
+        "php": ">=5.5",
+        "f-oris/easy-sdk-framework": "^0.5|^1.0",
+        "f-oris/easy-sdk-logger": "^0.5|^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.1",
-        "mockery/mockery": "^1.2",
-        "fzaninotto/faker": "^1.8"
+        "phpunit/phpunit": "^4.0|^5.0|^6.0|^7.0|^8.0",
+        "f-oris/easy-sdk-develop": "^0.5|^1.0"
     },
     "autoload": {
         "psr-4": {

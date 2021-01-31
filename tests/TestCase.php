@@ -19,7 +19,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Set up test environment
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         parent::setUp();
         $this->app = new Application();
