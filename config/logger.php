@@ -4,7 +4,7 @@ return [
     /**
      * default log channel
      */
-    'default' => 'stack',
+    'default' => 'daily',
 
     /**
      * available log channels
