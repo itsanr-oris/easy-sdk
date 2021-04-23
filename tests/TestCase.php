@@ -3,35 +3,31 @@
 namespace Foris\Easy\Sdk\Skeleton\Tests;
 
 use Foris\Easy\Sdk\Skeleton\Application;
+use Foris\Easy\Sdk\Skeleton\Console\Application as Artisan;
 
 /**
  * Class TestCase
  */
-class TestCase extends \PHPUnit\Framework\TestCase
+class TestCase extends \Foris\Easy\Sdk\Test\TestCase
 {
     /**
-     * Application instance.
+     * Create sdk application instance.
      *
-     * @var Application
+     * @return \Foris\Easy\Sdk\Application
      */
-    protected $app;
-
-    /**
-     * Set up test environment
-     */
-    protected function setUp()
+    protected function createApplication()
     {
-        parent::setUp();
-        $this->app = new Application();
+        return new Application();
     }
 
     /**
-     * Gets application instance
+     * Create artisan command application instance.
      *
-     * @return Application
+     * @return \Foris\Easy\Sdk\Console\Application|Artisan
+     * @throws \ReflectionException
      */
-    protected function app()
+    protected function createArtisan()
     {
-        return $this->app;
+        return new Artisan($this->app());
     }
 }

@@ -4,6 +4,7 @@ namespace Foris\Easy\Sdk\Skeleton\Tests\Logger;
 
 use Foris\Easy\Logger\Logger;
 use Foris\Easy\Sdk\Skeleton\Tests\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class GetLoggerInstanceTest
@@ -15,6 +16,6 @@ class GetLoggerInstanceTest extends TestCase
      */
     public function testGetLoggerInstance()
     {
-        $this->assertInstanceOf(Logger::class, $this->app()->get('logger'));
+        $this->assertInstanceOf(Logger::class, $this->app()->get(LoggerInterface::class));
     }
 }
