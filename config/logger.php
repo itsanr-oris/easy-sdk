@@ -18,13 +18,13 @@ return [
         'single' => [
             'driver' => 'single',
             'path' => __DIR__ . '/../logs/easy-logger.log',
-            'level' => 'debug',
+            'level' => \Psr\Log\LogLevel::DEBUG,
         ],
 
         'daily' => [
             'driver' => 'daily',
             'path' => __DIR__ . '/../logs/easy-logger.log',
-            'level' => 'info',
+            'level' => \Psr\Log\LogLevel::DEBUG,
         ],
     ],
 ];
