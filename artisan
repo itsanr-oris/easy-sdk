@@ -3,7 +3,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = new \Foris\Easy\Sdk\Skeleton\Application();
+$app = new \Foris\Easy\Sdk\Skeleton\Application(require __DIR__ . '/config.example.php');
 $artisan = new \Foris\Easy\Sdk\Skeleton\Console\Application($app);
 
 $artisan->run();
