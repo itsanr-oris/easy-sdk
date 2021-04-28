@@ -2,7 +2,7 @@
 
 namespace Foris\Easy\Sdk\Skeleton\Hello;
 
-use Foris\Easy\Sdk\Component;
+use Foris\Easy\Sdk\Skeleton\Component;
 
 /**
  * Class Hello
