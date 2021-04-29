@@ -15,13 +15,13 @@
 
 ## 使用教程
 
-#### 安装 easy-sdk-installer
+#### 1. 安装 easy-sdk-installer
 
 ```bash
 $ composer global require f-oris/easy-sdk-installer
 ```
 
-#### 创建 Sdk 项目
+#### 2. 创建 Sdk 项目
 
 执行sdk项目创建命令，按要求填入各项信息，完成sdk项目创建
 
@@ -29,7 +29,7 @@ $ composer global require f-oris/easy-sdk-installer
 $ easy-sdk new sdk-demo
 ```
 
-#### Sdk组件开发
+#### 3. Sdk组件开发
 
 进入`sdk-demo`目录，执行命令创建组件
 
@@ -58,7 +58,7 @@ class Hello extends Component
 }
 ```
 
-#### Sdk组件测试
+#### 4. Sdk组件测试
 
 创建`sdk-demo/tests/Hello`目录，再在目录内创建测试文件类`HelloComponentTest`，注意需要继承框架测试基类`TestCase`，编写测试脚本，如下：
 
@@ -82,9 +82,24 @@ class HelloComponentTest extends TestCase
 
 > 建议组件测试代码目录与组件代码相对目录保持一致，方便排查调试
 
-#### 发布Sdk代码包
+#### 5. 发布Sdk代码包
 
 按照[packagist](https://packagist.org/)组件包发布指引，发布Sdk代码包，待composer仓库同步完毕后，即可通过composer拉取sdk组件代码包进行使用
+
+#### 6. 在项目内使用Sdk组件包
+
+```php
+<?php
+
+// ...
+
+$app = new Application();
+$app->get(Hello::name())->hello();
+
+// ...
+```
+
+> 建议在Application类上加上@property注释，指向Hello::name(), 类型为Hello组件，方便IDE识别到组件代码，编码时有响应的功能提示
 
 ## 其他
 
