@@ -13,10 +13,6 @@
 
 - php >= 5.5
 
-## Easy-sdk项目简介
-
-Easy-sdk是一个用于快速构建PHP版本SDK的应用框架，通过此框架，开发人员可以快速将当前系统对外提供的功能服务封装成PHP版本的SDK，供其他PHP项目快速引入并使用当前系统提供的功能服务，完成相应的业务逻辑。为了让开发人员更好的上手使用，系统实现上主要借鉴Laravel、easy-wechat等项目的相关设计，某些框架功能使用上与Laravel、easy-wechat基本保持一致。
-
 ## 基本使用
 
 #### 1. 安装easy-sdk-installer
